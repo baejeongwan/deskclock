@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <title>Desk clock</title>
+        <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body class="bg-black">
+        <div class='modal fade' id='webviewModal' tabindex='-1' aria-labelledby='webviewModalLabel' aria-hidden='true'>
+            <div class='modal-dialog modal-fullscreen'>
+                <div class='modal-content bg-black'>
+                    <div class='modal-header'>
+                        <h1 class='modal-title fs-5' id='webviewModalLabel'>WEBVIEW - Show internet pages</h1>
+                        <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                    </div>
+                    <div class='modal-body'>
+                        <webview style="width: 100%; height: 100%; background-color: white;" id="webviewModalWebview"></webview>
+                    </div>
+                    <div class='modal-footer'>
+                        <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='container'>
+            <div class="datetime">
+                <p class="clock-text" id="main-clock">PM 03:03</p>
+                <p class="date-text" id="main-date">2023/02/01</p>
+            </div>
+            <div class="news">
+                <h1>What's up today? <a id="refreshLink" href="javascript:void(0)" onclick="window.datareader.getNewsData()"><i class="bi bi-arrow-clockwise"></i> Refresh</a></h1>
+                <ul id="newsList">
+                    <li>Some news! some news! Some NEWS!</li>
+                    <li>Some news! some news! Some NEWS!</li>
+                    <li>Some news! some news! Some NEWS!</li>
+                </ul>
+            </div>
+        </div>
+        <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="./renderer.js"></script>
+    </body>
+</html>
