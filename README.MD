@@ -1,6 +1,7 @@
 # DESK CLOCK
-WELCOME TO DESKCLOCK!
-(UNDER DEVELOPMENT...)
+WELCOME TO DESKCLOCK! (UNDER DEVELOPMENT...)   
+Current VERSION is 1.1.0   
+STATUS BADGES   
 
 ## IMPORTANT NOTE
 When you build, create an .env file and set it's content as following   
