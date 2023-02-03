@@ -18,7 +18,7 @@ jobs:
     - name: Upload built package for Windows
       uses: actions/upload-artifact@v3
       with:
-        name: Installer
+        name: Installer for Windows
         path: out/make/
 
   buildMacos:
@@ -38,7 +38,7 @@ jobs:
     - name: Upload built package for macOS
       uses: actions/upload-artifact@v3
       with:
-        name: Installer
+        name: Installer for macOS
         path: out/make/
 
   buildUbuntu:
@@ -58,5 +58,5 @@ jobs:
     - name: Upload built package for Ubuntu
       uses: actions/upload-artifact@v3
       with:
-        name: Installer
+        name: Installer for Ubuntu
         path: out/make/
