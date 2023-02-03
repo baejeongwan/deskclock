@@ -1,0 +1,62 @@
+on:
+  push:
+    branches:
+    - main
+jobs:
+  buildWindows:
+    name: Build for windows
+    runs-on: windows-latest
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v3
+    - name: Setup node
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18.x'
+    - name: Install Dependencies
+      run: npm install
+    - name: Build package
+      run: npm run make
+    - name: Upload built package for Windows
+    - uses: actions/upload-artifact@v3
+      with:
+        name: Installer
+        path: out/make/
+  buildMacos:
+    name: Build for macOS
+    runs-on: macos-latest
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v3
+    - name: Setup node
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18.x'
+    - name: Install Dependencies
+      run: npm install
+    - name: Build package
+      run: npm run make
+    - name: Upload built package for macOS
+    - uses: actions/upload-artifact@v3
+      with:
+        name: Installer
+        path: out/make/
+  buildUbuntu:
+    name: Build for Ubuntu
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v3
+    - name: Setup node
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18.x'
+    - name: Install Dependencies
+      run: npm install
+    - name: Build package
+      run: npm run make
+    - name: Upload built package for Ubuntu
+    - uses: actions/upload-artifact@v3
+      with:
+        name: Installer
+        path: out/make/
