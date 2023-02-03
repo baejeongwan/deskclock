@@ -18,7 +18,7 @@ jobs:
     - name: Build package
       run: npm run make
     - name: Upload built package for Windows
-    - uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v3
       with:
         name: Installer
         path: out/make/
@@ -37,7 +37,7 @@ jobs:
     - name: Build package
       run: npm run make
     - name: Upload built package for macOS
-    - uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v3
       with:
         name: Installer
         path: out/make/
@@ -56,7 +56,7 @@ jobs:
     - name: Build package
       run: npm run make
     - name: Upload built package for Ubuntu
-    - uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v3
       with:
         name: Installer
         path: out/make/
