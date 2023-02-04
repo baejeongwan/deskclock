@@ -10,3 +10,12 @@
 ### V1.1.0
 - Add NEWS API SUPPORT
 - Implemented internal webview
+
+## V1.1.1
+- Patched content of v1.0.1 again due to the bug (AGAIN)
+- Added to ignore the NO API KEY ERROR at the run.
+
+## V1.2.0
+- Add Autoupdater
+- Change to electron builder
+- Add settings

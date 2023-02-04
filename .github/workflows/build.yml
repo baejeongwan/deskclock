@@ -14,7 +14,7 @@ jobs:
     - name: Install Dependencies
       run: npm install
     - name: Build package
-      run: npm run make
+      run: npm run build-win
     - name: Upload built package for Windows
       uses: actions/upload-artifact@v3
       with:
@@ -34,7 +34,7 @@ jobs:
     - name: Install Dependencies
       run: npm install
     - name: Build package
-      run: npm run make
+      run: npm run build-mac
     - name: Upload built package for macOS
       uses: actions/upload-artifact@v3
       with:
@@ -54,7 +54,7 @@ jobs:
     - name: Install Dependencies
       run: npm install
     - name: Build package
-      run: npm run make
+      run: npm run build-linux
     - name: Upload built package for Ubuntu
       uses: actions/upload-artifact@v3
       with:

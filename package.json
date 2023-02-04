@@ -1,29 +1,48 @@
 {
   "name": "deskclock",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Desk clock",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron-forge start",
-    "package": "electron-forge package",
-    "make": "electron-forge make"
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "build-win": "electron-builder --windows --x64 --ia32",    
+    "build-mac": "electron-builder --mac --x64",    
+    "build-linux": "electron-builder --linux --x64 --ia32"
   },
   "author": "Jayden Bae",
   "license": "ISC",
   "devDependencies": {
-    "@electron-forge/cli": "^6.0.4",
-    "@electron-forge/maker-deb": "^6.0.4",
-    "@electron-forge/maker-rpm": "^6.0.4",
-    "@electron-forge/maker-squirrel": "^6.0.4",
-    "@electron-forge/maker-zip": "^6.0.4",
-    "electron": "^22.1.0"
+    "electron": "^22.1.0",
+    "electron-builder": "^23.6.0"
   },
   "dependencies": {
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.3",
     "dotenv": "^16.0.3",
-    "electron-squirrel-startup": "^1.0.0",
+    "electron-progressbar": "^2.0.1",
+    "electron-updater": "^5.3.0",
     "newsapi": "^2.4.1"
+  },
+  "build": {
+    "appId": "com.jaydenbae.deskclock",
+    "productName": "Deskclock",
+    "mac": {
+      "category": "public.app-category.utilities"
+    },
+    "win": {
+      "target": "nsis",
+      "publisherName": "Jayden Bae Software"
+    },
+    "linux": {
+      "target": "AppImage",
+      "category": "Utility"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true
+
+    }
   }
 }
