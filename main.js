@@ -65,19 +65,24 @@ ipcMain.handle("get-news-data", async (event) => {
 autoUpdater.addListener("update-available", info => {
     let returnNum = dialog.showMessageBoxSync({message: "Update to the version " + info.version + " is available!\nWould you like to download?", buttons: ["Yes, download now", "No, skip for now"], title: "Update available!"})
     if (returnNum == 0) {
-        autoUpdater.downloadUpdate()
-        var progressBar = new ProgressBar({
+        progressBar = new ProgressBar({
             indeterminate: false,
             text: "Downloading updates...",
             detail: "Wait...",
             maxValue: 100
         })
+        autoUpdater.downloadUpdate()
     }
     
 })
 
 autoUpdater.addListener("download-progress", progress => {
-    progressBar.value = progress.percent
+    try {
+        progressBar.value = progress.percent
+        
+    } catch (error) {
+        console.error("FAILED DOWNLOAD")
+    }
 })
 
 autoUpdater.addListener("update-downloaded", info => {
