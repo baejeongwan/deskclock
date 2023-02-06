@@ -20,5 +20,8 @@ contextBridge.exposeInMainWorld("datareader", {
             document.getElementById("newsList").innerHTML = "<p>Cannot access to the News API. Please try again later.</p>"
             document.getElementById("refreshLink").innerHTML = `<i class="bi bi-arrow-clockwise"></i> Refresh`
         })
+    },
+    checkUpdates: () => {
+        ipcRenderer.send("check-for-update")
     }
 })

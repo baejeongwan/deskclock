@@ -19,3 +19,7 @@ p, h1, li, h5 {
 .settingNavItem {
     width: 100%;
 }
+
+#settingTabContent {
+    margin-left: 5px;
+}

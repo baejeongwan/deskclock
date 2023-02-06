@@ -1,4 +1,5 @@
 const { app, BrowserWindow, Menu, ipcMain, dialog } = require('electron')
+const fs = require('fs')
 const path = require('path')
 const { autoUpdater } = require('electron-updater')
 const ProgressBar = require('electron-progressbar')
@@ -6,6 +7,7 @@ const NewsAPI = require('newsapi')
 
 let newsapi;
 let progressBar;
+let win;
 require('dotenv').config({path: path.join(__dirname, ".env")})
 
 try {
@@ -15,11 +17,13 @@ try {
     console.error("ERROR DETECTED WHILE LOADING NEWSAPI... JUST IGNORING...")
 }
 
+
+
 autoUpdater.autoDownload = false;
 autoUpdater.checkForUpdates()
 
 const createWindow = () => {
-    const win = new BrowserWindow({
+    win = new BrowserWindow({
         width: 1024,
         height: 600,
         autoHideMenuBar: true,
@@ -60,6 +64,10 @@ ipcMain.handle("get-news-data", async (event) => {
         country: "kr",
         pageSize: 5
     })
+})
+
+ipcMain.on("check-for-update", e => {
+    autoUpdater.checkForUpdatesAndNotify();
 })
 
 autoUpdater.addListener("update-available", info => {

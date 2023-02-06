@@ -22,3 +22,6 @@
 
 ### V1.2.1
 - Patch error
+
+### V1.2.2
+- Switched to bootstrap-based dark mode - this is expected to allow switch between normal and dark mode.

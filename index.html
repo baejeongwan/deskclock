@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html data-bs-theme="dark">
     <head>
         <meta charset='utf-8'>
         <meta name='viewport' content='width=device-width, initial-scale=1'>
@@ -8,10 +8,12 @@
         <link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.css">
         <link rel="stylesheet" href="./style.css">
     </head>
+    <!--Removed bg-black-->
     <body class="bg-black">
         <div class='modal fade' id='webviewModal' tabindex='-1' aria-labelledby='webviewModalLabel' aria-hidden='true'>
             <div class='modal-dialog modal-fullscreen'>
-                <div class='modal-content bg-black'>
+                <!--Removed bg-black-->
+                <div class='modal-content '>
                     <div class='modal-header'>
                         <h1 class='modal-title fs-5' id='webviewModalLabel'>WEBVIEW - Show internet pages</h1>
                         <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
@@ -27,13 +29,14 @@
         </div>
         <div class='modal fade' id='settingsModal' tabindex='-1' aria-labelledby='settingsModalLabel' aria-hidden='true'>
             <div class='modal-dialog modal-fullscreen'>
-                <div class='modal-content bg-black'>
+                <!--Removed bg-black-->
+                <div class='modal-content '>
                     <div class='modal-header'>
                         <h1 class='modal-title fs-5' id='settingsModalLabel'>Settings</h1>
                         <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
                     </div>
                     <div class='modal-body d-flex'>
-                        <ul class="nav flex-column" id="settingNav" role="tablist">
+                        <ul class="nav flex-column" id="settingNav" role="tablist" data-bs-theme="light">
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active settingNavItem" id="updates-tab" data-bs-toggle="tab" data-bs-target="#updates-tab-pane" type="button" role="tab" aria-controls="updates-tab-pane" aria-selected="true">Updates</button>
                             </li>
@@ -44,7 +47,7 @@
                         <div class="tab-content" id="settingTabContent">
                             <div class="tab-pane fade active show" id="updates-tab-pane" role="tabpanel" aria-labelledby="updates-tab" tabindex="0">
                                 <h1>Check for Deskclock updates</h1>
-                                <button onclick="" class="btn btn-primary">Check for Updates (NOT READY)</button>
+                                <button onclick="window.datareader.checkUpdates()" class="btn btn-primary">Check for Updates</button>
                             </div>
                             <div class="tab-pane fade" id="about-tab-pane" role="tabpanel" aria-labelledby="about-tab" tabindex="0">
                                 <h1>About</h1>
@@ -58,7 +61,8 @@
                 </div>
             </div>
         </div>
-        <div class="offcanvas offcanvas-start bg-dark" tabindex="-1" id="appOffcanvas" aria-labelledby="appOffcanvasLabel">
+        <!--Removed class BG-DARK-->
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="appOffcanvas" aria-labelledby="appOffcanvasLabel">
             <div class="offcanvas-header">
                 <h5 class="offcanvas-title" id="appOffcanvasLabel">Applications</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>

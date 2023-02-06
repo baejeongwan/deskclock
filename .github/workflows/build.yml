@@ -19,7 +19,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: Installer for Windows
-        path: out/make/
+        path: dist/
 
   buildMacos:
     name: Build for macOS
@@ -39,7 +39,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: Installer for macOS
-        path: out/make/
+        path: dist/
 
   buildUbuntu:
     name: Build for Ubuntu
@@ -59,4 +59,4 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: Installer for Ubuntu
-        path: out/make/
+        path: dist/
