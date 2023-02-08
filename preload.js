@@ -23,5 +23,24 @@ contextBridge.exposeInMainWorld("datareader", {
     },
     checkUpdates: () => {
         ipcRenderer.send("check-for-update")
+    },
+    getConfigKey: (keyName) => {
+        return getKey(keyName)
+    },
+    setConfigKey: (keyName, keyValue) => {
+        setKey(keyName, keyValue)
     }
 })
+
+async function getKey(keyName) {
+    return await ipcRenderer.invoke("get-key", keyName)
+}
+
+function setKey(keyName, keyValue) {
+    let data = {
+        keyName: keyName,
+        keyValue: keyValue
+    }
+    console.log("Key will be saved", data)
+    ipcRenderer.send("set-key", data)
+}

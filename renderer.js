@@ -57,3 +57,21 @@ function openApp(idNum) {
 }
 
 //#endregion
+
+//#region Setting Management
+$("#settingsModal").addEventListener("show.bs.modal", e => {
+    window.datareader.getConfigKey("newsGeo").then((result) => {
+        $("#newsGeoSelect>[value=" + result + "]").selected = true
+        $("#newsGeoSelect").onchange = newsGeoChange
+    })
+})
+
+$("#settingsModal").addEventListener("hide.bs.modal", e => {
+    $("#newsGeoSelect").onchange = null
+})
+
+function newsGeoChange() {
+    console.log("CHANGE!")
+    window.datareader.setConfigKey("newsGeo", $("#newsGeoSelect").value)
+}
+//#endregion

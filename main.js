@@ -8,7 +8,10 @@ const NewsAPI = require('newsapi')
 let newsapi;
 let progressBar;
 let win;
+let config = {};
 require('dotenv').config({path: path.join(__dirname, ".env")})
+
+loadConfiguration()
 
 try {
     newsapi = new NewsAPI(process.env.NEWSAPIKEY)
@@ -39,12 +42,21 @@ const createWindow = () => {
 
 const template = [
     {
-        label: "File",
         role: "filemenu"
     },
     {
-        label: "View",
         role: "viewmenu"
+    },
+    {
+        role: "help",
+        submenu: [
+            {
+                label: "About",
+                click () {
+                    require('electron').dialog.showMessageBoxSync({message: "Deskclock Version " + require('electron').app.getVersion() + "\nBy Jayden Bae", type: "info", title: "About"})
+                }
+            }
+        ]
     }
 ]
 
@@ -61,7 +73,7 @@ app.on('window-all-closed', () => {
 
 ipcMain.handle("get-news-data", async (event) => {
     return await newsapi.v2.topHeadlines({
-        country: "kr",
+        country: getKey("newsGeo"),
         pageSize: 5
     })
 })
@@ -100,3 +112,43 @@ autoUpdater.addListener("update-downloaded", info => {
         autoUpdater.quitAndInstall()
     }
 })
+
+//#region Config
+function loadConfiguration() {
+    let calculatedFilePath = path.join(app.getPath("userData"), "config.json")
+    if (fs.existsSync(calculatedFilePath)) {
+        let filetextdata = fs.readFileSync(calculatedFilePath, {encoding: "utf8"})
+        config = JSON.parse(filetextdata)
+        console.log("CONFIGURATION READY!")
+    } else {
+        fs.copyFileSync(path.join(__dirname, "default.json"), calculatedFilePath)
+        console.log("CONFIGURATION GENERATED")
+        loadConfiguration()
+        
+    }
+}
+
+function writeConfiguration() {
+    let calculatedFilePath = path.join(app.getPath("userData"), "config.json")
+    fs.writeFileSync(calculatedFilePath, JSON.stringify(config))
+    //If there is data to report, report here
+}
+
+function getKey(keyName) {
+    return config[keyName]
+}
+
+function setKey(keyName, value) {
+    config[keyName] = value
+    writeConfiguration()
+}
+
+ipcMain.handle('get-key', (e, arg) => {
+    return getKey(arg)
+})
+
+ipcMain.on('set-key', (e, args) => {
+    setKey(args.keyName, args.keyValue)
+})
+
+//#endregion
